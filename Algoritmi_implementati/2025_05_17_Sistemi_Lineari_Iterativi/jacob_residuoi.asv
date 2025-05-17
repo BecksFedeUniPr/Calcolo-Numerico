@@ -1,0 +1,21 @@
+function [solution] = jacobi_residuo(A, b,tolleranza,x)
+    if(det(B) < 1)
+        solution = [];
+        return
+    end
+    
+    if(det(D) == 0)
+        solution = [];
+        return
+    end
+
+
+
+    C = A - D;
+    x_k = x;
+    
+    while norm(b-A*x_k) > tolleranza
+        x_k = 
+    end
+
+end
