@@ -14,6 +14,6 @@ b = A*sol;
 
 x_mat = A \ b
 
-x_jac = jacob_residuo(A,b,tolleranza,sol)
+x_jac = jacob_incremento(A,b,tolleranza,sol)
 
 
