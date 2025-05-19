@@ -6,14 +6,14 @@ A = [4, 1, 2;
      1, 3, 1;
      2, 1, 5];
 
-b = [7; 5; 8];
+sol = ones(3,1);
 
-tolleranza = 10^(-6);
+tolleranza = 10^(-5);
 
-x = 1:2:6;
+b = A*sol;
 
 x_mat = A \ b
 
-x_jac = jacob_residuo(A,b,tolleranza,x)
+x_jac = jacob_residuo(A,b,tolleranza,sol)
 
 

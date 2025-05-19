@@ -1,25 +1,17 @@
 function [solution] = jacob_residuo(A, b,tolleranza,x)
     D = diag(diag(A));
     C = A - D;
-    x_k = x;
+    x_old = [1:3]';
+    x_new = x_old.*2;
     inv_D = inv(D);
+    mat_iter = -inv(D)*C;
 
 
-    if(det(D) == 0)
-        solution = [];
-        return
+    while norm(b - A*x_new) > tolleranza
+        x_old = x_new;
+        x_new = mat_iter * x_old + inv(D)*b;
     end
 
-    if(det(-inv_D*C) > 1)
-        solution = [];
-        return
-    end
-
-    
-    while norm(b - A*x_k) > tolleranza
-        x_k = inv_D*(b - C*x_k);
-    end
-
-    solution = x_k;
+    solution = x_new;
 
 end
