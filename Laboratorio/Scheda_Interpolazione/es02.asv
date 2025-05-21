@@ -1,0 +1,39 @@
+clear
+clc
+close all
+
+a = -5;
+b = 5;
+grado = 5;
+n_nodi = grado + 1;
+iterar = 0:n_nodi;
+nodi = linspace(a,b,n_nodi);
+nodi_chev = (a+b)/2 - (b - a)/2*cos((2.*iterar+1)*pi/(2*n_nodi+2))
+
+
+f = @(x) 1 ./(1 + x.^2);
+valori = f(nodi);
+coeff_poly = polyfit(nodi,valori,grado);
+x = linspace(a,b,n_nodi*5);
+poli_int = polyval(coeff_poly,x);
+
+plot(nodi,valori,'*');
+hold on;
+plot(x,f(x));
+hold on;
+plot(x,poli_int);
+
+abs(norm(f(x))-norm(poli_int,inf));
+
+legend("Dati","funzione esatta","polinomio interpolatore")
+
+figure(2)
+
+coeff_poly_ch = polyfit(nodi_chev,valori,grado);
+poli_int = polyval(coeff_poly_ch,x);
+
+plot(nodi_ch,valori,'*');
+hold on;
+plot(x,f(x));
+hold on;
+plot(x,poli_int);
