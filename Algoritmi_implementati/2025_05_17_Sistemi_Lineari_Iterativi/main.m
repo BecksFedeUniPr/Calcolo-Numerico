@@ -2,18 +2,11 @@ clear
 clc
 close all
 
-A = [4, 1, 2;
-     1, 3, 1;
-     2, 1, 5];
+A = [4 3; 
+     6 3];
 
-sol = ones(3,1);
-
-tolleranza = 10^(-5);
-
-b = A*sol;
+b = [10; 12];
 
 x_mat = A \ b
 
-x_jac = jacob_incremento(A,b,tolleranza,sol)
-
-
+fattorizzazioneLU(A,b')
